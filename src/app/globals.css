@@ -4,76 +4,82 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.985 0.006 84);
-  --foreground: oklch(0.23 0.03 20);
-  --card: oklch(0.992 0.004 84 / 0.96);
-  --card-foreground: oklch(0.23 0.03 20);
-  --popover: oklch(0.992 0.004 84 / 0.98);
-  --popover-foreground: oklch(0.23 0.03 20);
-  --primary: oklch(0.41 0.15 10);
-  --primary-foreground: oklch(0.99 0.005 84);
-  --secondary: oklch(0.95 0.02 85);
-  --secondary-foreground: oklch(0.3 0.04 20);
-  --muted: oklch(0.955 0.012 85);
-  --muted-foreground: oklch(0.47 0.04 28);
-  --accent: oklch(0.76 0.1 155);
-  --accent-foreground: oklch(0.18 0.03 20);
-  --destructive: oklch(0.6 0.2 25);
-  --destructive-foreground: oklch(0.98 0.005 84);
-  --border: oklch(0.88 0.02 70);
-  --input: oklch(0.975 0.01 84);
-  --ring: oklch(0.41 0.15 10);
-  --chart-1: oklch(0.41 0.15 10);
-  --chart-2: oklch(0.56 0.17 18);
-  --chart-3: oklch(0.76 0.1 155);
-  --chart-4: oklch(0.9 0.05 102);
-  --chart-5: oklch(0.62 0.08 175);
-  --radius: 1.3rem;
-  --sidebar: oklch(0.99 0.005 84);
-  --sidebar-foreground: oklch(0.23 0.03 20);
-  --sidebar-primary: oklch(0.41 0.15 10);
-  --sidebar-primary-foreground: oklch(0.99 0.005 84);
-  --sidebar-accent: oklch(0.95 0.02 85);
-  --sidebar-accent-foreground: oklch(0.23 0.03 20);
-  --sidebar-border: oklch(0.88 0.02 70);
-  --sidebar-ring: oklch(0.41 0.15 10);
-  --success: oklch(0.76 0.1 155);
-  --warning: oklch(0.88 0.12 92);
-  --info: oklch(0.68 0.08 190);
+  /* Brand palette: #DB1A1A #FFF6F6 #8CC7C4 #2C687B */
+  --brand-red: #db1a1a;
+  --brand-cream: #fff6f6;
+  --brand-mint: #8cc7c4;
+  --brand-teal: #2c687b;
+
+  --background: #fff6f6;
+  --foreground: #2c687b;
+  --card: #ffffff;
+  --card-foreground: #2c687b;
+  --popover: #ffffff;
+  --popover-foreground: #2c687b;
+  --primary: #db1a1a;
+  --primary-foreground: #fff6f6;
+  --secondary: color-mix(in srgb, #8cc7c4 32%, #fff6f6);
+  --secondary-foreground: #2c687b;
+  --muted: color-mix(in srgb, #2c687b 8%, #fff6f6);
+  --muted-foreground: color-mix(in srgb, #2c687b 70%, #ffffff);
+  --accent: #8cc7c4;
+  --accent-foreground: #2c687b;
+  --destructive: #db1a1a;
+  --destructive-foreground: #fff6f6;
+  --border: color-mix(in srgb, #2c687b 16%, #fff6f6);
+  --input: color-mix(in srgb, #2c687b 10%, #ffffff);
+  --ring: #db1a1a;
+  --chart-1: #db1a1a;
+  --chart-2: #2c687b;
+  --chart-3: #8cc7c4;
+  --chart-4: color-mix(in srgb, #db1a1a 65%, #ffffff);
+  --chart-5: color-mix(in srgb, #2c687b 55%, #8cc7c4);
+  --radius: 1.25rem;
+  --sidebar: #fff6f6;
+  --sidebar-foreground: #2c687b;
+  --sidebar-primary: #db1a1a;
+  --sidebar-primary-foreground: #fff6f6;
+  --sidebar-accent: color-mix(in srgb, #8cc7c4 28%, #fff6f6);
+  --sidebar-accent-foreground: #2c687b;
+  --sidebar-border: color-mix(in srgb, #2c687b 14%, #fff6f6);
+  --sidebar-ring: #db1a1a;
+  --success: #8cc7c4;
+  --warning: color-mix(in srgb, #db1a1a 25%, #fff6f6);
+  --info: #2c687b;
 }
 
 .dark {
-  --background: oklch(0.16 0.03 8);
-  --foreground: oklch(0.96 0.008 84);
-  --card: oklch(0.22 0.03 10 / 0.92);
-  --card-foreground: oklch(0.96 0.008 84);
-  --popover: oklch(0.2 0.03 10 / 0.96);
-  --popover-foreground: oklch(0.96 0.008 84);
-  --primary: oklch(0.7 0.16 14);
-  --primary-foreground: oklch(0.16 0.03 8);
-  --secondary: oklch(0.26 0.03 15 / 0.9);
-  --secondary-foreground: oklch(0.96 0.008 84);
-  --muted: oklch(0.24 0.03 12 / 0.88);
-  --muted-foreground: oklch(0.78 0.02 76);
-  --accent: oklch(0.76 0.1 155);
-  --accent-foreground: oklch(0.16 0.03 8);
-  --border: oklch(0.33 0.04 14 / 0.7);
-  --input: oklch(0.22 0.03 10 / 0.95);
-  --ring: oklch(0.7 0.16 14);
-  --sidebar: oklch(0.18 0.03 10 / 0.95);
-  --sidebar-foreground: oklch(0.96 0.008 84);
-  --sidebar-primary: oklch(0.7 0.16 14);
-  --sidebar-primary-foreground: oklch(0.16 0.03 8);
-  --sidebar-accent: oklch(0.26 0.03 15 / 0.9);
-  --sidebar-accent-foreground: oklch(0.96 0.008 84);
-  --sidebar-border: oklch(0.33 0.04 14 / 0.7);
-  --sidebar-ring: oklch(0.7 0.16 14);
+  --background: #1e4a57;
+  --foreground: #fff6f6;
+  --card: #2c687b;
+  --card-foreground: #fff6f6;
+  --popover: #2c687b;
+  --popover-foreground: #fff6f6;
+  --primary: #db1a1a;
+  --primary-foreground: #fff6f6;
+  --secondary: color-mix(in srgb, #8cc7c4 28%, #2c687b);
+  --secondary-foreground: #fff6f6;
+  --muted: color-mix(in srgb, #fff6f6 14%, #2c687b);
+  --muted-foreground: color-mix(in srgb, #fff6f6 75%, #2c687b);
+  --accent: #8cc7c4;
+  --accent-foreground: #2c687b;
+  --border: color-mix(in srgb, #fff6f6 18%, #2c687b);
+  --input: color-mix(in srgb, #fff6f6 12%, #2c687b);
+  --ring: #db1a1a;
+  --sidebar: #1e4a57;
+  --sidebar-foreground: #fff6f6;
+  --sidebar-primary: #db1a1a;
+  --sidebar-primary-foreground: #fff6f6;
+  --sidebar-accent: #2c687b;
+  --sidebar-accent-foreground: #fff6f6;
+  --sidebar-border: color-mix(in srgb, #fff6f6 15%, #2c687b);
+  --sidebar-ring: #db1a1a;
 }
 
 @theme inline {
-  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-sans: var(--font-body-ui), ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-display: var(--font-heading-ui), var(--font-body-ui), ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -145,12 +151,34 @@
     mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.18), transparent 70%);
   }
 
+  body.marketing-site {
+    background: var(--brand-cream) !important;
+    background-image: none !important;
+    background-attachment: scroll;
+  }
+
+  body.marketing-site::before {
+    display: none !important;
+  }
+
+  body[data-nav-layout='bottom'] {
+    padding-bottom: calc(4.35rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.marketing-site h1,
+  body.marketing-site h2,
+  body.marketing-site h3,
+  body.marketing-site h4 {
+    font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.035em;
+  }
+
   h1,
   h2,
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
   }
 
   p,
@@ -162,7 +190,7 @@
   }
 
   ::selection {
-    background: rgba(174, 36, 72, 0.18);
+    background: rgba(219, 26, 26, 0.18);
     color: inherit;
   }
 }
@@ -206,22 +234,22 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(110, 26, 55, 0.25);
+  background: rgba(44, 104, 123, 0.35);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(110, 26, 55, 0.42);
+  background: rgba(44, 104, 123, 0.55);
 }
 
 .reading-progress {
   position: fixed;
   top: 0;
   left: 0;
-  height: 2px;
-  background: linear-gradient(90deg, rgb(174, 36, 72), rgb(114, 186, 169));
+  height: 3px;
+  background: linear-gradient(90deg, #db1a1a, #8cc7c4);
   z-index: 100;
-  transition: width 0.1s ease-out;
+  transition: width 0.12s ease-out;
 }
 
 .article-content h2 {
@@ -229,7 +257,8 @@
   font-weight: 700;
   line-height: 1.25;
   margin: 2.2rem 0 1rem;
-  color: rgb(110, 26, 55);
+  color: #2c687b;
+  scroll-margin-top: 6rem;
 }
 
 .article-content h3 {
@@ -237,6 +266,7 @@
   font-weight: 700;
   line-height: 1.35;
   margin: 1.5rem 0 0.75rem;
+  scroll-margin-top: 6rem;
 }
 
 .article-content p {
@@ -244,7 +274,7 @@
 }
 
 .article-content a {
-  color: rgb(174, 36, 72);
+  color: #db1a1a;
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -372,4 +402,25 @@ body[data-nav-layout="sidebar-left"] header[data-mobile-nav="true"] {
   body[data-nav-layout="sidebar-left"] header[data-mobile-nav="true"] {
     display: none;
   }
+}
+
+/* Headings: Plus Jakarta via --font-display, overriding factory task font packs */
+body.marketing-site .factory-font-directory h1,
+body.marketing-site .factory-font-directory h2,
+body.marketing-site .factory-font-directory h3,
+body.marketing-site .factory-font-directory h4,
+body.marketing-site .factory-font-market h1,
+body.marketing-site .factory-font-market h2,
+body.marketing-site .factory-font-market h3,
+body.marketing-site .factory-font-market h4,
+body.marketing-site .factory-font-studio h1,
+body.marketing-site .factory-font-studio h2,
+body.marketing-site .factory-font-studio h3,
+body.marketing-site .factory-font-studio h4,
+body.marketing-site .factory-font-editorial h1,
+body.marketing-site .factory-font-editorial h2,
+body.marketing-site .factory-font-editorial h3,
+body.marketing-site .factory-font-editorial h4 {
+  font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.035em;
 }

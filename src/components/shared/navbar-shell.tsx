@@ -1,12 +1,12 @@
 "use client";
 
 import { Suspense } from "react";
-import { Navbar } from "@/components/shared/navbar";
+import { BottomNav } from "@/components/shared/bottom-nav";
 
 export function NavbarShell() {
   return (
     <Suspense fallback={null}>
-      <Navbar />
+      <BottomNav />
     </Suspense>
   );
 }

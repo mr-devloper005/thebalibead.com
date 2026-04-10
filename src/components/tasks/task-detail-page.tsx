@@ -19,6 +19,17 @@ import { getFactoryState } from "@/design/factory/get-factory-state";
 import { getProductKind } from "@/design/factory/get-product-kind";
 import { DirectoryTaskDetailPage } from "@/design/products/directory/task-detail-page";
 import { TASK_DETAIL_PAGE_OVERRIDE_ENABLED, TaskDetailPageOverride } from "@/overrides/task-detail-page";
+import {
+  ArticleReadingProgress,
+  ArticleShareRow,
+  ArticleTableOfContents,
+} from "@/components/articles/article-reading-client";
+
+function estimateReadMinutesFromHtml(html: string) {
+  const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  const words = text ? text.split(" ").length : 0;
+  return Math.max(1, Math.round(words / 200));
+}
 
 type PostContent = {
   category?: string;
@@ -147,6 +158,7 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
   const description = content.description || post.summary || "Details coming soon.";
   const descriptionHtml = !isArticle ? formatRichHtml(description, "Details coming soon.") : "";
   const articleHtml = isArticle ? formatArticleHtml(content, post) : "";
+  const readMinutes = isArticle ? estimateReadMinutesFromHtml(articleHtml) : 0;
   const articleSummary =
     post.summary ||
     (typeof content.excerpt === "string" ? content.excerpt : "") ||
@@ -267,45 +279,66 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
         >
           <div className={cn(isClassified ? "space-y-8" : "")}>
             {isArticle ? (
-              <div className="mx-auto w-full max-w-4xl space-y-6">
-                <h1 className="text-4xl font-semibold leading-tight text-foreground">
-                  {post.title}
-                </h1>
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-                  <span>By {articleAuthor}</span>
-                  {articleDate ? <span>{articleDate}</span> : null}
-                  <Badge variant="secondary" className="inline-flex items-center gap-1">
-                    <Tag className="h-3.5 w-3.5" />
-                    {category}
-                  </Badge>
-                </div>
-                {postTags.length ? (
-                  <div className="flex flex-wrap gap-2">
-                    {postTags.map((tag) => (
-                      <Badge key={tag} variant="outline">
-                        {tag}
+              <>
+                <ArticleReadingProgress containerSelector="#article-reading-container" />
+                <div className="mx-auto grid w-full max-w-6xl gap-10 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-start">
+                  <div id="article-reading-container" className="min-w-0 space-y-6">
+                    <h1 className="text-4xl font-extrabold leading-[1.12] tracking-tight text-[#2C687B] sm:text-5xl">
+                      {post.title}
+                    </h1>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+                      <span>By {articleAuthor}</span>
+                      {articleDate ? <span>{articleDate}</span> : null}
+                      <span className="rounded-full bg-[#8CC7C4]/25 px-2.5 py-0.5 text-xs font-semibold text-[#2C687B]">
+                        {readMinutes} min read
+                      </span>
+                      <Badge variant="secondary" className="inline-flex items-center gap-1 border-[#8CC7C4]/40 bg-[#8CC7C4]/20 text-[#2C687B]">
+                        <Tag className="h-3.5 w-3.5" />
+                        {category}
                       </Badge>
-                    ))}
-                  </div>
-                ) : null}
-                {articleSummary ? (
-                  <p className="text-base leading-7 text-muted-foreground">{articleSummary}</p>
-                ) : null}
-                {images[0] ? (
-                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-3xl border border-border bg-muted">
-                    <ContentImage
-                      src={images[0]}
-                      alt={`${post.title} featured image`}
-                      fill
-                      className="object-cover"
-                      intrinsicWidth={1600}
-                      intrinsicHeight={900}
+                    </div>
+                    <ArticleShareRow url={articleUrl} title={post.title} />
+                    <ArticleTableOfContents
+                      containerSelector="#article-reading-container"
+                      className="lg:hidden"
                     />
+                    {postTags.length ? (
+                      <div className="flex flex-wrap gap-2">
+                        {postTags.map((tag) => (
+                          <Badge key={tag} variant="outline" className="border-[#8CC7C4]/45 text-[#2C687B]">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
+                    ) : null}
+                    {articleSummary ? (
+                      <p className="text-lg leading-8 text-[#2C687B]/85">{articleSummary}</p>
+                    ) : null}
+                    {images[0] ? (
+                      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.25rem] border border-[#8CC7C4]/35 bg-[#FFF6F6] shadow-sm">
+                        <ContentImage
+                          src={images[0]}
+                          alt={`${post.title} featured image`}
+                          fill
+                          className="object-cover"
+                          intrinsicWidth={1600}
+                          intrinsicHeight={900}
+                        />
+                      </div>
+                    ) : null}
+                    <RichContent
+                      html={articleHtml}
+                      className="leading-8 prose-p:my-6 prose-headings:font-bold prose-h2:my-8 prose-h2:text-[#2C687B] prose-h3:my-6 prose-h3:text-[#2C687B] prose-ul:my-6 prose-a:text-[#DB1A1A] prose-a:no-underline hover:prose-a:underline"
+                    />
+                    <ArticleComments slug={post.slug} />
                   </div>
-                ) : null}
-                <RichContent html={articleHtml} className="leading-8 prose-p:my-6 prose-h2:my-8 prose-h3:my-6 prose-ul:my-6" />
-                <ArticleComments slug={post.slug} />
-              </div>
+                  <aside className="hidden lg:block" aria-label="Article outline">
+                    <div className="sticky top-6">
+                      <ArticleTableOfContents containerSelector="#article-reading-container" />
+                    </div>
+                  </aside>
+                </div>
+              </>
             ) : null}
 
             {!isArticle ? (
@@ -475,17 +508,17 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
           ) : null}
         </div>
 
-        <section className="mt-12">
+        <section className="mt-14 border-t border-[#8CC7C4]/35 pt-12">
           {related.length ? (
             <>
-            <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-xl font-semibold text-foreground">
-                More in {category}
+            <div className="mb-6 flex items-center justify-between gap-4">
+              <h2 className="text-2xl font-bold tracking-tight text-[#2C687B]">
+                More like this
               </h2>
               {taskConfig?.route && (
                 <Link
                   href={taskConfig.route}
-                  className="text-sm text-muted-foreground hover:text-foreground"
+                  className="text-sm font-semibold text-[#DB1A1A] hover:text-[#c41515]"
                 >
                   View all
                 </Link>
@@ -502,14 +535,14 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
             </div>
             </>
           ) : null}
-          <nav className="mt-6 rounded-2xl border border-border bg-card/60 p-4">
-            <p className="text-sm font-semibold text-foreground">Related links</p>
-            <ul className="mt-2 space-y-2 text-sm">
+          <nav className="mt-8 rounded-2xl border border-[#8CC7C4]/40 bg-white p-5 shadow-sm">
+            <p className="text-sm font-semibold text-[#2C687B]">Related links</p>
+            <ul className="mt-3 space-y-2 text-sm">
               {related.map((item) => (
                 <li key={`link-${item.id}`}>
                   <Link
                     href={buildPostUrl(task, item.slug)}
-                    className="text-primary underline-offset-4 hover:underline"
+                    className="text-[#DB1A1A] underline-offset-4 hover:underline"
                   >
                     {item.title}
                   </Link>
@@ -519,7 +552,7 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
                 <li>
                   <Link
                     href={taskConfig.route}
-                    className="text-primary underline-offset-4 hover:underline"
+                    className="text-[#DB1A1A] underline-offset-4 hover:underline"
                   >
                     Browse all {taskConfig.label}
                   </Link>
@@ -528,7 +561,7 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
               <li>
                 <Link
                   href={`/search?q=${encodeURIComponent(category)}`}
-                  className="text-primary underline-offset-4 hover:underline"
+                  className="text-[#DB1A1A] underline-offset-4 hover:underline"
                 >
                   Search more in {category}
                 </Link>
