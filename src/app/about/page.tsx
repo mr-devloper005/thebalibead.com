@@ -8,22 +8,28 @@ import { mockTeamMembers } from "@/data/mock-data";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 const highlights = [
-  { label: "Creators onboarded", value: "12k+" },
-  { label: "Bookmarks shared", value: "180k" },
-  { label: "Listings published", value: "8.6k" },
-];
+  { label: 'Creators onboarded', value: '12k+' },
+  { label: 'Bookmarks shared', value: '180k' },
+  { label: 'Listings published', value: '8.6k' },
+]
 
 const values = [
-  { title: "Curated by people", description: "We believe trusted recommendations beat endless feeds." },
-  { title: "Designed for focus", description: "Clear, calm UI helps you find the next best resource fast." },
-  { title: "Built to share", description: "Collections make collaboration and knowledge flow effortless." },
-];
+  { title: 'Curated by people', description: 'We believe trusted recommendations beat endless feeds.' },
+  { title: 'Designed for focus', description: 'Clear, calm UI helps you find the next best resource fast.' },
+  { title: 'Built to share', description: 'Collections make collaboration and knowledge flow effortless.' },
+]
+
+const timeline = [
+  { year: '2024', milestone: 'Platform concept and first creator interviews' },
+  { year: '2025', milestone: 'Public beta with image sharing and profiles' },
+  { year: '2026', milestone: 'Expanded company, resources, and legal experience' },
+]
 
 export default function AboutPage() {
   return (
     <PageShell
       title={`About ${SITE_CONFIG.name}`}
-      description={`${SITE_CONFIG.name} is a modern platform for creators, communities, and curated business discovery.`}
+      description={`${SITE_CONFIG.name} is a local-first discovery platform built for creators, businesses, and communities.`}
       actions={
         <>
           <Button variant="outline" asChild>
@@ -38,13 +44,13 @@ export default function AboutPage() {
       <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <Card className="border-border bg-card">
           <CardContent className="space-y-4 p-6">
-            <Badge variant="secondary">Our Story</Badge>
+            <Badge className="bg-[#2C687B] text-white hover:bg-[#2C687B]">Our Story</Badge>
             <h2 className="text-2xl font-semibold text-foreground">
-              A single home for knowledge, discovery, and community.
+              A single home for trusted discovery in Bali.
             </h2>
             <p className="text-sm text-muted-foreground">
-              {SITE_CONFIG.name} brings together publishing, listings, and social bookmarking so teams can move faster
-              and keep their best resources close.
+              {SITE_CONFIG.name} combines image sharing, profiles, resources, and community threads so people can find
+              quality recommendations without noise.
             </p>
             <div className="grid gap-4 sm:grid-cols-3">
               {highlights.map((item) => (
@@ -88,6 +94,19 @@ export default function AboutPage() {
           </Card>
         ))}
       </div>
+      <div className="mt-10">
+        <h3 className="text-lg font-semibold text-foreground">Journey so far</h3>
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
+          {timeline.map((item) => (
+            <Card key={item.year} className="border-border bg-card">
+              <CardContent className="p-6">
+                <p className="text-xs uppercase tracking-wide text-[#2C687B]">{item.year}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{item.milestone}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
     </PageShell>
-  );
+  )
 }

@@ -35,7 +35,7 @@ export function BottomNav() {
   const { isAuthenticated } = useAuth()
   const tasks = SITE_CONFIG.tasks.filter((t) => t.enabled && t.key !== 'profile')
 
-  const accountHref = isAuthenticated ? '/dashboard' : '/login'
+  const accountHref = isAuthenticated ? '/account' : '/login'
   const accountLabel = isAuthenticated ? 'Account' : 'Sign in'
 
   const navItems: {
@@ -56,7 +56,7 @@ export function BottomNav() {
       href: accountHref,
       label: accountLabel,
       icon: User,
-      match: (p) => p.startsWith('/login') || p.startsWith('/register') || p.startsWith('/dashboard') || p.startsWith('/settings') || p.startsWith('/profile'),
+      match: (p) => p.startsWith('/login') || p.startsWith('/register') || p.startsWith('/account'),
     },
   ]
 

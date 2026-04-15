@@ -3,13 +3,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 const sections = [
-  { title: "Account Usage", body: "Keep your account secure and follow community guidelines." },
+  { title: 'Account Usage', body: 'Keep your account secure and follow community guidelines.' },
   {
-    title: "Content Ownership",
-    body: "You own the content you publish and grant the platform a license to display it.",
+    title: 'Content Ownership',
+    body: 'You own the content you publish and grant the platform a license to display it.',
   },
-  { title: "Acceptable Use", body: "No spam, harassment, or illegal content." },
-];
+  { title: 'Acceptable Use', body: 'No spam, harassment, or illegal content.' },
+  { title: 'Payments & Billing', body: 'Paid services renew based on your selected plan and can be canceled anytime.' },
+]
 
 export default function TermsPage() {
   return (
@@ -26,8 +27,12 @@ export default function TermsPage() {
               <p className="mt-2 text-sm text-muted-foreground">{section.body}</p>
             </div>
           ))}
+          <div className="rounded-lg border border-border bg-secondary/40 p-4">
+            <h3 className="text-sm font-semibold text-foreground">Questions about terms</h3>
+            <p className="mt-2 text-sm text-muted-foreground">Reach us at legal@thebalibead.com.</p>
+          </div>
         </CardContent>
       </Card>
     </PageShell>
-  );
+  )
 }

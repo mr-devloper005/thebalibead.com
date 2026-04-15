@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card'
 const sections = [
   { title: 'Data We Collect', body: 'Account information, usage analytics, and content you submit.' },
   { title: 'How We Use Data', body: 'To personalize your experience, improve search, and keep the platform secure.' },
+  { title: 'Data Sharing', body: 'We do not sell personal data and only share with service providers needed to run the platform.' },
   { title: 'Your Choices', body: 'You can manage email preferences and delete your account at any time.' },
 ]
 
@@ -11,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <PageShell
       title="Privacy Policy"
-      description="How we collect, use, and protect your information."
+      description="How we collect, use, and protect your information with clear controls."
     >
       <Card className="border-border bg-card">
         <CardContent className="p-6 space-y-4">
@@ -22,6 +23,10 @@ export default function PrivacyPage() {
               <p className="mt-2 text-sm text-muted-foreground">{section.body}</p>
             </div>
           ))}
+          <div className="rounded-lg border border-border bg-secondary/40 p-4">
+            <h3 className="text-sm font-semibold text-foreground">Contact for privacy requests</h3>
+            <p className="mt-2 text-sm text-muted-foreground">Email: privacy@thebalibead.com</p>
+          </div>
         </CardContent>
       </Card>
     </PageShell>
