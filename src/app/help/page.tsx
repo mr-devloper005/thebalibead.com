@@ -9,13 +9,14 @@ const topics = [
   { title: 'Getting Started', description: 'Create your account and publish your first post.' },
   { title: 'Bookmarks & Collections', description: 'Save links, organize folders, and share collections.' },
   { title: 'Listings & Ads', description: 'Manage your business listings and classifieds.' },
+  { title: 'Profiles', description: 'Set up profile blocks, contact actions, and visibility settings.' },
 ]
 
 export default function HelpPage() {
   return (
     <PageShell
       title="Help Center"
-      description="Find answers, guides, and best practices."
+      description="Find answers, guides, and best practices with a refreshed support layout."
       actions={
         <Button asChild>
           <Link href="/contact">Contact Support</Link>
@@ -44,6 +45,12 @@ export default function HelpPage() {
                 </AccordionItem>
               ))}
             </Accordion>
+            <div className="mt-6 rounded-lg border border-border bg-secondary/40 p-4">
+              <p className="text-sm font-medium text-foreground">Need direct support?</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Our support team usually replies within one business day.
+              </p>
+            </div>
           </CardContent>
         </Card>
       </div>

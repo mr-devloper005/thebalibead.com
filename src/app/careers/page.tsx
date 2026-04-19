@@ -6,17 +6,17 @@ import { Badge } from "@/components/ui/badge";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 const roles = [
-  { title: "Product Designer", location: "Remote", type: "Full-time", level: "Mid" },
-  { title: "Frontend Engineer", location: "New York, NY", type: "Full-time", level: "Senior" },
-  { title: "Community Lead", location: "Remote", type: "Part-time", level: "Mid" },
-];
+  { title: 'Product Designer', location: 'Remote', type: 'Full-time', level: 'Mid' },
+  { title: 'Frontend Engineer', location: 'New York, NY', type: 'Full-time', level: 'Senior' },
+  { title: 'Community Lead', location: 'Remote', type: 'Part-time', level: 'Mid' },
+]
 
 const benefits = [
-  "Flexible schedules and remote-first culture",
-  "Health, dental, and vision coverage",
-  "Annual learning stipend",
-  "Quarterly offsites and team retreats",
-];
+  'Flexible schedules and remote-first culture',
+  'Health, dental, and vision coverage',
+  'Annual learning stipend',
+  'Quarterly offsites and team retreats',
+]
 
 export default function CareersPage() {
   return (
@@ -49,9 +49,9 @@ export default function CareersPage() {
         </div>
         <Card className="border-border bg-card">
           <CardContent className="p-6">
-            <h3 className="text-lg font-semibold text-foreground">Why {SITE_CONFIG.name}</h3>
+            <h3 className="text-lg font-semibold text-foreground">Why join {SITE_CONFIG.name}</h3>
             <p className="mt-2 text-sm text-muted-foreground">
-              We are building a product that helps people discover and share the best knowledge on the web.
+              You will work on product areas that matter to real creators and local businesses every day.
             </p>
             <div className="mt-4 space-y-2 text-sm text-muted-foreground">
               {benefits.map((benefit) => (
@@ -60,9 +60,13 @@ export default function CareersPage() {
                 </div>
               ))}
             </div>
+            <div className="mt-6 rounded-lg border border-border bg-secondary/40 p-4">
+              <p className="text-sm font-medium text-foreground">Hiring process</p>
+              <p className="mt-2 text-sm text-muted-foreground">Intro call → practical interview → final conversation → offer.</p>
+            </div>
           </CardContent>
         </Card>
       </div>
     </PageShell>
-  );
+  )
 }

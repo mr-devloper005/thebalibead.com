@@ -5,6 +5,7 @@ const sections = [
   { title: 'Essential Cookies', body: 'Required for authentication and core features.' },
   { title: 'Analytics Cookies', body: 'Help us understand how the platform is used.' },
   { title: 'Preference Cookies', body: 'Remember your settings and saved filters.' },
+  { title: 'Marketing Cookies', body: 'Used for campaign performance and audience insights where allowed.' },
 ]
 
 export default function CookiesPage() {
@@ -22,6 +23,9 @@ export default function CookiesPage() {
               <p className="mt-2 text-sm text-muted-foreground">{section.body}</p>
             </div>
           ))}
+          <div className="rounded-lg border border-border bg-secondary/40 p-4 text-sm text-muted-foreground">
+            You can update cookie preferences anytime from account settings.
+          </div>
         </CardContent>
       </Card>
     </PageShell>
