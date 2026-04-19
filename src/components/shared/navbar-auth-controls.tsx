@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Bell, Bookmark, ChevronDown, LayoutGrid, LogOut, Plus, Settings, User, FileText, Building2, Tag, Image as ImageIcon } from 'lucide-react'
+import { Bell, ChevronDown, LayoutGrid, LogOut, Plus, User, FileText, Building2, Tag, Image as ImageIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -122,20 +122,7 @@ export function NavbarAuthControls() {
               <span className="text-xs text-[#7f646b]">{user?.email}</span>
             </div>
           </div>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <Link href="/dashboard/saved">
-              <Bookmark className="mr-2 h-4 w-4" />
-              Saved Items
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem asChild>
-            <Link href="/settings">
-              <Settings className="mr-2 h-4 w-4" />
-              Settings
-            </Link>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
+          <div className="px-3 pb-2 text-xs text-[#7f646b]">Signed in account</div>
           <DropdownMenuItem onClick={logout} className="text-destructive">
             <LogOut className="mr-2 h-4 w-4" />
             Sign Out

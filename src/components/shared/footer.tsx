@@ -184,10 +184,10 @@ export function Footer() {
               </div>
               <div>
                 <span className="block text-lg font-semibold">{SITE_CONFIG.name}</span>
-                <span className="text-xs uppercase tracking-[0.22em] text-slate-400">{siteContent.footer.tagline}</span>
+                <span className="text-xs uppercase tracking-[0.22em] text-slate-200">{siteContent.footer.tagline}</span>
               </div>
             </Link>
-            <p className="mt-5 max-w-sm text-sm leading-7 text-slate-400">{SITE_CONFIG.description}</p>
+            <p className="mt-5 max-w-sm text-sm leading-7 text-slate-100/90">{SITE_CONFIG.description}</p>
             {primaryTask ? (
               <Link
                 href={primaryTask.route}
@@ -200,8 +200,8 @@ export function Footer() {
           </div>
           {(['platform', 'company', 'resources', 'legal'] as const).map((section) => (
             <div key={section}>
-              <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-500">{section}</h3>
-              <ul className="mt-5 space-y-3 text-sm text-slate-300">
+              <h3 className="text-sm font-semibold uppercase tracking-[0.22em] text-slate-200">{section}</h3>
+              <ul className="mt-5 space-y-3 text-sm text-slate-100">
                 {footerLinks[section].map((item: any) => (
                   <li key={item.name}>
                     <Link href={item.href} className="flex items-center gap-2 hover:text-white">
@@ -214,7 +214,7 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 border-t border-white/10 pt-6 text-center text-sm text-slate-500">
+        <div className="mt-12 border-t border-white/10 pt-6 text-center text-sm text-slate-200">
           &copy; {new Date().getFullYear()} {SITE_CONFIG.name}. All rights reserved.
         </div>
       </div>

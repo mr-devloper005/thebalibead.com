@@ -5,7 +5,6 @@ import { ContentImage } from '@/components/shared/content-image'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { SchemaJsonLd } from '@/components/seo/schema-jsonld'
-import { TaskPostCard } from '@/components/shared/task-post-card'
 import { SITE_CONFIG, type TaskKey } from '@/lib/site-config'
 import { buildPageMetadata } from '@/lib/seo'
 import { fetchTaskPosts } from '@/lib/task-data'
@@ -113,7 +112,6 @@ function DirectoryHome({ primaryTask, enabledTasks, listingPosts, classifiedPost
 }) {
   const tone = getDirectoryTone(brandPack)
   const featuredListings = (listingPosts.length ? listingPosts : classifiedPosts).slice(0, 3)
-  const featuredTaskKey: TaskKey = listingPosts.length ? 'listing' : 'classified'
   const quickRoutes = enabledTasks.slice(0, 4)
 
   return (
@@ -180,21 +178,6 @@ function DirectoryHome({ primaryTask, enabledTasks, listingPosts, classifiedPost
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between gap-4 border-b border-border pb-6">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Featured businesses</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">Strong listings with clearer trust cues.</h2>
-          </div>
-          <Link href="/listings" className="text-sm font-semibold text-primary hover:opacity-80">Open listings</Link>
-        </div>
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {featuredListings.map((post) => (
-            <TaskPostCard key={post.id} post={post} href={getTaskHref(featuredTaskKey, post.slug)} taskKey={featuredTaskKey} />
-          ))}
         </div>
       </section>
 

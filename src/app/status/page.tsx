@@ -6,21 +6,23 @@ const services = [
   { name: 'Web App', status: 'Operational' },
   { name: 'API', status: 'Operational' },
   { name: 'Media CDN', status: 'Operational' },
+  { name: 'Search Index', status: 'Operational' },
 ]
 
 const incidents = [
   { date: 'Mar 12, 2026', title: 'Delayed notifications', status: 'Resolved' },
   { date: 'Feb 22, 2026', title: 'Search indexing lag', status: 'Resolved' },
+  { date: 'Jan 09, 2026', title: 'Image processing queue backlog', status: 'Resolved' },
 ]
 
 export default function StatusPage() {
   return (
     <PageShell
       title="System Status"
-      description="Real-time uptime and service health."
+      description="Real-time uptime, service health, and incident updates."
     >
       <div className="space-y-6">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-4">
           {services.map((service) => (
             <Card key={service.name} className="border-border bg-card">
               <CardContent className="p-6">
@@ -41,6 +43,10 @@ export default function StatusPage() {
                   <div className="text-xs text-muted-foreground">{incident.status}</div>
                 </div>
               ))}
+            </div>
+            <div className="mt-6 rounded-lg border border-border bg-secondary/40 p-4">
+              <p className="text-sm font-medium text-foreground">Subscribe to updates</p>
+              <p className="mt-1 text-sm text-muted-foreground">Email and webhook alerts are available in account settings.</p>
             </div>
           </CardContent>
         </Card>
