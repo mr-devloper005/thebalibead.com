@@ -24,6 +24,36 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/articles',
+        destination: '/article',
+        permanent: true,
+      },
+      {
+        source: '/articles/:slug*',
+        destination: '/article/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/classifieds',
+        destination: '/classified',
+        permanent: true,
+      },
+      {
+        source: '/classifieds/:slug*',
+        destination: '/classified/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/listings',
+        destination: '/listing',
+        permanent: true,
+      },
+      {
+        source: '/listings/:slug*',
+        destination: '/listing/:slug*',
+        permanent: true,
+      },
+      {
         source: '/image-sharing',
         destination: '/image',
         permanent: true,
@@ -48,6 +78,30 @@ const nextConfig = {
 
   async rewrites() {
     return [
+      {
+        source: '/article',
+        destination: '/articles',
+      },
+      {
+        source: '/article/:slug*',
+        destination: '/articles/:slug*',
+      },
+      {
+        source: '/classified',
+        destination: '/classifieds',
+      },
+      {
+        source: '/classified/:slug*',
+        destination: '/classifieds/:slug*',
+      },
+      {
+        source: '/listing',
+        destination: '/listings',
+      },
+      {
+        source: '/listing/:slug*',
+        destination: '/listings/:slug*',
+      },
       {
         source: '/image',
         destination: '/image-sharing',
