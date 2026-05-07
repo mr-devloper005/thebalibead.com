@@ -51,6 +51,16 @@ const nextConfig = {
         destination: '/user/:slug*',
         permanent: true,
       },
+      {
+        source: '/users',
+        destination: '/user',
+        permanent: true,
+      },
+      {
+        source: '/users/:slug*',
+        destination: '/user/:slug*',
+        permanent: true,
+      },
     ];
   },
 
