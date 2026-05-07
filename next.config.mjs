@@ -34,16 +34,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/profile',
-        destination: '/user',
-        permanent: true,
-      },
-      {
-        source: '/profile/:slug*',
-        destination: '/user/:slug*',
-        permanent: true,
-      },
-      {
         source: '/users',
         destination: '/user',
         permanent: true,
@@ -106,6 +96,7 @@ const nextConfig = {
       },
     ];
   },
+
 }
 
 export default nextConfig
