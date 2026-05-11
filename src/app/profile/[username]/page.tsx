@@ -178,8 +178,8 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
                   </li>
                 ))}
                 <li>
-                  <Link href="/profile" className="text-primary underline-offset-4 hover:underline">
-                    Browse all profiles
+                  <Link href="/community" className="text-primary underline-offset-4 hover:underline">
+                    Browse community
                   </Link>
                 </li>
               </ul>
