@@ -69,6 +69,7 @@ export default async function SearchPage({
   });
 
   const results = normalized.length > 0 ? filtered : filtered.slice(0, 24);
+  const visibleResults = results.filter((post) => getPostTaskKey(post) !== "profile");
 
   return (
     <PageShell
@@ -98,9 +99,9 @@ export default async function SearchPage({
         </form>
       }
     >
-      {results.length ? (
+      {visibleResults.length ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {results.map((post) => {
+          {visibleResults.map((post) => {
             const task = getPostTaskKey(post);
             const href = task ? buildPostUrl(task, post.slug) : `/posts/${post.slug}`;
             return <TaskPostCard key={post.id} post={post} href={href} />;

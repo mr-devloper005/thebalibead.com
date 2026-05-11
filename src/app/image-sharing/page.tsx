@@ -3,6 +3,8 @@ import { PageShell } from '@/components/shared/page-shell'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { TaskPostCard } from '@/components/shared/task-post-card'
+import { fetchTaskPosts } from '@/lib/task-data'
 
 const collections = [
   { title: 'Travel Stories', count: '2.1k images', description: 'Destination albums from creators and local guides.' },
@@ -12,7 +14,9 @@ const collections = [
 
 const features = ['Fast uploads with drag-and-drop', 'Smart tags by location and mood', 'Private boards for teams and clients']
 
-export default function ImageSharingPage() {
+export default async function ImageSharingPage() {
+  const imagePosts = await fetchTaskPosts('image', 12, { fresh: true })
+
   return (
     <PageShell
       title="Image Sharing"
@@ -65,17 +69,25 @@ export default function ImageSharingPage() {
           </CardContent>
         </Card>
       </div>
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
-        {collections.map((item) => (
-          <Card key={item.title} className="border-border bg-card transition-transform hover:-translate-y-1">
-            <CardContent className="p-6">
-              <p className="text-xs uppercase tracking-wide text-[#2C687B]">{item.count}</p>
-              <h3 className="mt-2 text-lg font-semibold text-foreground">{item.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      {imagePosts.length ? (
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {imagePosts.map((post) => (
+            <TaskPostCard key={post.id} post={post} href={`/image-sharing/${post.slug}`} taskKey="image" />
+          ))}
+        </div>
+      ) : (
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {collections.map((item) => (
+            <Card key={item.title} className="border-border bg-card transition-transform hover:-translate-y-1">
+              <CardContent className="p-6">
+                <p className="text-xs uppercase tracking-wide text-[#2C687B]">{item.count}</p>
+                <h3 className="mt-2 text-lg font-semibold text-foreground">{item.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{item.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
     </PageShell>
   )
 }
