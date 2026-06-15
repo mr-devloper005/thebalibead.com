@@ -311,9 +311,6 @@ export async function TaskDetailPage({ task, slug }: { task: TaskKey; slug: stri
                         ))}
                       </div>
                     ) : null}
-                    {articleSummary ? (
-                      <p className="text-lg leading-8 text-[#2C687B]/85">{articleSummary}</p>
-                    ) : null}
                     {images[0] ? (
                       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[1.25rem] border border-[#8CC7C4]/35 bg-[#FFF6F6] shadow-sm">
                         <ContentImage
